@@ -51,6 +51,10 @@ function App(props) {
 
   const cancelSearch = () => {
     setSearchTerm('')
+    props.dispatch({
+      type: 'DO_SEARCH',
+      payload: ''
+    })
     loadCards('', 'search')
   }
 
