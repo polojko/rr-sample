@@ -36,9 +36,6 @@
   margin: 10vh 0;
   width: 100%;
 }
-.cards-container {
-  margin: 3vw 0;
-}
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -51,6 +48,10 @@
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   background: rgb(236,215,151);
   background: linear-gradient(90deg, rgba(236,215,151,1) 0%, rgba(156,143,106,1) 30%, rgba(233,228,211,1) 100%);
+}
+.card:hover {
+  transition: all 0.5s 0s ease;
+  transform: scale(1.05,1.05);
 }
 
 .card-name {

@@ -15,7 +15,7 @@ const Loader = () => {
     return (
         <div className='loader'>
             <CircularProgress color='inherit' />
-            <div>Loading...</div>
+            <p>Loading...</p>
         </div>
     );
 }
@@ -28,7 +28,7 @@ const Error = () => {
 
 const NoData = () => {
     return (
-        <div className='loader'>No data is available.</div>
+        <div className='loader'>No more data is available.</div>
     );
 }
 
