@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Constants from './Constants';
 import { Loader, NoData, Footer, Error, ScrollToTop, SearchMessage } from './components/Helpers';
 import Card from './components/Card';
 import SearchBar from 'material-ui-search-bar';
@@ -78,7 +79,7 @@ function App(props) {
 
   const validateSearchInput = (input) => {
     if (input?.length < 4) {
-      setSearchMessage('search term should be at least 4 chars long...');
+      setSearchMessage(Constants.SEARCH_MESSAGE_TEXT);
     } else {
       setSearchMessage('');
       setSearchTerm(input);
