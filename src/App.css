@@ -45,10 +45,18 @@
   justify-content: center;
 }
 .card {
-  width: 200px;
+  width: 220px;
   padding: 10px;
   border: 1px solid;
   margin: 10px;
+}
+
+.card-name {
+  font-weight: bold;
+  font-size: 1.1rem
+}
+.card-text, .other-fields {
+  font-size: .8rem
 }
 
 .card img {
@@ -71,6 +79,20 @@
 
 .search {
   padding: 3vw;
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 514px) {
+  .scroll-to-top {
+    bottom: 60px;
+
+  }
 }
 
 @keyframes App-logo-spin {

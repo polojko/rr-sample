@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
-import { connect } from 'react-redux'
+import './App.css';
+import { connect } from 'react-redux';
+import _ from 'lodash';
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Loader, NoData, Footer, Error } from './components/Helpers'
+import { Loader, NoData, Footer, Error, ScrollToTop } from './components/Helpers';
 import SearchBar from "material-ui-search-bar";
 
 function App(props) {
@@ -10,6 +11,7 @@ function App(props) {
   const { cards, page, pageSize } = props;
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [showScroll, setShowScroll] = useState(false);
   const [error, setError] = useState('');
 
   const loadCards = (name, type) => {
@@ -40,21 +42,31 @@ function App(props) {
       type: 'DO_SEARCH',
       payload: input
     })
-    loadCards(input,'search')
+    loadCards(input, 'search')
   }
 
   const loadingMessage = (isLoading, error) => {
     if (error) {
-      return <Error /> 
+      return <Error />
     } else if (isLoading) {
-      return <Loader/>
+      return <Loader />
     } else {
-      return <NoData/>
+      return <NoData />
+    }
+  }
+
+  const showScrollToTop = () => {
+    console.log('scroll called!!');
+    if (window.pageYOffset > 400) {
+      setShowScroll(true)
+    } else if (window.pageYOffset <= 400) {
+      setShowScroll(false)
     }
   }
 
   useEffect(() => {
-    loadCards()
+    loadCards();
+    window.addEventListener('scroll', _.debounce(showScrollToTop,500));
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -67,7 +79,7 @@ function App(props) {
           value={searchTerm}
           onChange={(newValue) => setSearchTerm(newValue)}
           onRequestSearch={() => doSearch(searchTerm, 'search')}
-          onCancelSearch={() => doSearch(setSearchTerm(''),'search')} // clears cards, and refetches them
+          onCancelSearch={() => doSearch(setSearchTerm(''), 'search')} // clears cards, and refetches them
         />
       </div>
       <div className='cards-container'>
@@ -82,14 +94,17 @@ function App(props) {
           {cards.map((card, index) => (
             <div key={card.id} className='card'>
               <img src={card.imageUrl} alt={card.name} />
-              <div>{card.name}</div>
-              <div>{card.text}</div>
-              <div>{card.set.name}</div>
-              <div>{card.type}</div>
+              <div className='card-name'>{card.name}</div>
+              <div className='card-text'>{card.text}</div>
+              <div className='other-fields'>
+                {card.set.name && <span><b>Set:</b> {card.set.name} </span>}
+                {card.type && <span><b>Type:</b> {card.type}</span>}
+              </div>
             </div>
           ))}
         </InfiniteScroll>
       </div>
+      {showScroll && <ScrollToTop />}
       <Footer />
     </div>
   )
