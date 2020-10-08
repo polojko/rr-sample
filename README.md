@@ -1,4 +1,4 @@
-![The Elder Scrolls Legends™](https://highspot.vercel.app/logo.png)
+![](https://highspot.vercel.app/logo.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -35,7 +35,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Instructions
 
-This site utilizes [React/REdux](https://react-redux.js.org/). In order to see in broswer, please install [Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension).
+This site utilizes [React/REdux](https://react-redux.js.org/). In order to see it in browser, please install [Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension).
 
 Other libraries used:
 * [Lodash](https://lodash.com/)
