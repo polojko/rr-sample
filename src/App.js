@@ -45,7 +45,7 @@ function App(props) {
 
   /**
    * Function to dispatch to redux store
-   * @param {*} input - search term
+   * @param {String} input - search term
    */
   const doSearch = (input) => {
     validateSearchInput(input)
@@ -74,7 +74,7 @@ function App(props) {
   /**
    * Returns different helper components, based on state of data fetching
    * @param {Boolean} isLoading - state of data loading
-   * @param {*} error - error message
+   * @param {String} error - error message
    */
   const loadingMessage = (isLoading, error) => {
     if (error) {
