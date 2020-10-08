@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component renders correctly 1`] = `
+<div
+  className="card"
+>
+  <img
+    alt="Raise Dead"
+    src="https://images.elderscrollslegends.io/cs/raise_dead.png"
+  />
+  <div
+    className="card-name"
+  >
+    Raise Dead
+  </div>
+  <div
+    className="card-text"
+  >
+    Summon a random creature from each discard pile.
+  </div>
+  <div
+    className="other-fields"
+  >
+    <span>
+      <b>
+        Set:
+      </b>
+       
+      Core Set
+       
+    </span>
+    <span>
+      <b>
+        Type:
+      </b>
+       
+      Action
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Card component renders correctly 2`] = `
+Object {
+  "attributes": Array [
+    "Endurance",
+  ],
+  "collectible": false,
+  "cost": 2,
+  "id": "ce7be2e72d6b06a52e50bed01952801ca4ecfade",
+  "imageUrl": "https://images.elderscrollslegends.io/cs/raise_dead.png",
+  "name": "Raise Dead",
+  "rarity": "Legendary",
+  "set": Object {
+    "_self": "https://api.elderscrollslegends.io/v1/sets/cs",
+    "id": "cs",
+    "name": "Core Set",
+  },
+  "text": "Summon a random creature from each discard pile.",
+  "type": "Action",
+  "unique": false,
+}
+`;
