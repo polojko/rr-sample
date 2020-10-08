@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import './App.css';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { Loader, NoData, Footer, Error, ScrollToTop, SearchMessage } from './components/Helpers';
-import SearchBar from "material-ui-search-bar";
+import Card from './components/Card';
+import SearchBar from 'material-ui-search-bar';
 
 function App(props) {
 
@@ -23,7 +24,6 @@ function App(props) {
       fetch('https://api.elderscrollslegends.io/v1/cards?name=' + searchTerm + '&pageSize=' + pageSize + '&page=' + pageCount) // useSwr to cache this - yugo-music
         .then(response => response.json())
         .then(json => {
-          console.log('json: ', json);
           setIsLoading(false);
           props.dispatch({
             type: 'LOAD_CARDS',
@@ -86,11 +86,9 @@ function App(props) {
     window.addEventListener('scroll', _.debounce(showScrollToTop,500));
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  console.log('searchMessage: ', searchMessage.toString());
-
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <img src='/logo.png' className='App-logo' alt='Elder Scrolls Legends' />
       </header>
       <div className='search'>
@@ -111,16 +109,8 @@ function App(props) {
           className='cards'
           scrollThreshold='100px'
         >
-          {cards.map((card, index) => (
-            <div key={card.id} className='card'>
-              <img src={card.imageUrl} alt={card.name} />
-              <div className='card-name'>{card.name}</div>
-              <div className='card-text'>{card.text}</div>
-              <div className='other-fields'>
-                {card.set.name && <span><b>Set:</b> {card.set.name} </span>}
-                {card.type && <span><b>Type:</b> {card.type}</span>}
-              </div>
-            </div>
+          {cards.map((card) => (
+            <Card card={card} key={card.id} />
           ))}
         </InfiniteScroll>
       </div>

@@ -47,8 +47,10 @@
 .card {
   width: 220px;
   padding: 10px;
-  border: 1px solid;
   margin: 10px;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  background: rgb(236,215,151);
+  background: linear-gradient(90deg, rgba(236,215,151,1) 0%, rgba(156,143,106,1) 30%, rgba(233,228,211,1) 100%);
 }
 
 .card-name {
