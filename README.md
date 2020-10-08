@@ -23,7 +23,7 @@ or
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm build`
+### `npm run-script build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -50,6 +50,13 @@ Third party components utilized in this project:
 
 ## Demo
 This site is currently deployed at https://highspot.vercel.app/.
+
+## Optiomization
+This project is not complete and could be further optimized by:
+* Adding data [caching](https://swr.vercel.app/), [memoization](https://dev.to/dinhhuyams/introduction-to-react-memo-usememo-and-usecallback-5ei3), to reduce number of fetch calls, improve performance.
+* Using [styled-compoments](https://styled-components.com/), to encapsulate/isolate components' styling.
+* Extrapolate Redux actions into separate folder/file (e.g. ./actions/index.js), so they can be tested in isolation.
+* Improving test coverage.
 
 ## Learn More
 
