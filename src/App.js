@@ -17,6 +17,11 @@ function App(props) {
   const [showScroll, setShowScroll] = useState(false);
   const [error, setError] = useState('');
 
+  /**
+   * Fetches data from api endopint.
+   * @param {String} name - search term passed to this function
+   * @param {String} type - type of loading ('search' indicates that search term is set)
+   */
   const loadCards = (name, type) => {
     setIsLoading(true); // resets isLoading back to true
     let searchTerm = name ? name : '';
@@ -38,6 +43,10 @@ function App(props) {
     }, 2000) // timeout to see loader
   }
 
+  /**
+   * Function to dispatch to redux store
+   * @param {*} input - search term
+   */
   const doSearch = (input) => {
     validateSearchInput(input)
     if (input?.length < 4) {
@@ -50,6 +59,9 @@ function App(props) {
     loadCards(input, 'search')
   }
 
+  /***
+   * Cancels last search, reloads data
+   */
   const cancelSearch = () => {
     setSearchTerm('')
     props.dispatch({
@@ -59,6 +71,11 @@ function App(props) {
     loadCards('', 'search')
   }
 
+  /**
+   * Returns different helper components, based on state of data fetching
+   * @param {Boolean} isLoading - state of data loading
+   * @param {*} error - error message
+   */
   const loadingMessage = (isLoading, error) => {
     if (error) {
       return <Error />
@@ -69,6 +86,9 @@ function App(props) {
     }
   }
 
+  /**
+   * Determines when tho shouw 'scroll to top' button
+   */
   const showScrollToTop = () => {
     if (window.pageYOffset > 400) {
       setShowScroll(true)
@@ -77,6 +97,10 @@ function App(props) {
     }
   }
 
+  /**
+   * Basic validation for search input
+   * @param {String} input 
+   */
   const validateSearchInput = (input) => {
     if (input?.length < 4) {
       setSearchMessage(Constants.SEARCH_MESSAGE_TEXT);
@@ -86,6 +110,9 @@ function App(props) {
     }
   }
 
+  /**
+   * Hook to load data, set scroll event listener
+   */
   useEffect(() => {
     loadCards();
     window.addEventListener('scroll', _.debounce(showScrollToTop,500));
