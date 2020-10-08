@@ -1,6 +1,7 @@
 /** Helper components */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
@@ -27,7 +28,7 @@ const Error = () => {
 
 const NoData = () => {
     return (
-        <div className='loader'>No more data is available.</div>
+        <div className='loader'>No data is available.</div>
     );
 }
 
@@ -39,4 +40,16 @@ const ScrollToTop = () => {
     )
 }
 
-export { Footer, Loader, Error, NoData, ScrollToTop };
+const SearchMessage = ({message}) => {
+    return (
+        <div className='search-message'>
+            {message}
+        </div>
+    )
+}
+
+SearchMessage.propTypes = {
+    content: PropTypes.string
+};
+
+export { Footer, Loader, Error, NoData, ScrollToTop, SearchMessage };

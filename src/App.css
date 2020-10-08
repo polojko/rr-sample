@@ -53,7 +53,8 @@
 
 .card-name {
   font-weight: bold;
-  font-size: 1.1rem
+  font-size: 1.1rem;
+  padding-bottom: 1vh;
 }
 .card-text, .other-fields {
   font-size: .8rem
@@ -86,6 +87,11 @@
   right: 10px;
   z-index: 1;
   cursor: pointer;
+}
+
+.search-message {
+  padding-top: 1vh;
+  color: crimson;
 }
 
 @media (max-width: 514px) {

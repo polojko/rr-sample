@@ -3,13 +3,14 @@ import './App.css';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Loader, NoData, Footer, Error, ScrollToTop } from './components/Helpers';
+import { Loader, NoData, Footer, Error, ScrollToTop, SearchMessage } from './components/Helpers';
 import SearchBar from "material-ui-search-bar";
 
 function App(props) {
 
   const { cards, page, pageSize } = props;
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchMessage, setSearchMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
   const [error, setError] = useState('');
@@ -34,15 +35,23 @@ function App(props) {
           console.log(error);
         });
     }, 2000) // timeout to see loader
-
   }
 
   const doSearch = (input) => {
+    validateSearchInput(input)
+    if (input?.length < 4) {
+      return;
+    }
     props.dispatch({
       type: 'DO_SEARCH',
       payload: input
     })
     loadCards(input, 'search')
+  }
+
+  const cancelSearch = () => {
+    setSearchTerm('')
+    loadCards('', 'search')
   }
 
   const loadingMessage = (isLoading, error) => {
@@ -56,7 +65,6 @@ function App(props) {
   }
 
   const showScrollToTop = () => {
-    console.log('scroll called!!');
     if (window.pageYOffset > 400) {
       setShowScroll(true)
     } else if (window.pageYOffset <= 400) {
@@ -64,10 +72,21 @@ function App(props) {
     }
   }
 
+  const validateSearchInput = (input) => {
+    if (input?.length < 4) {
+      setSearchMessage('search term should be at least 4 chars long...');
+    } else {
+      setSearchMessage('');
+      setSearchTerm(input);
+    }
+  }
+
   useEffect(() => {
     loadCards();
     window.addEventListener('scroll', _.debounce(showScrollToTop,500));
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  console.log('searchMessage: ', searchMessage.toString());
 
   return (
     <div className="App">
@@ -77,10 +96,11 @@ function App(props) {
       <div className='search'>
         <SearchBar
           value={searchTerm}
-          onChange={(newValue) => setSearchTerm(newValue)}
+          onChange={(newValue) => validateSearchInput(newValue)}
           onRequestSearch={() => doSearch(searchTerm, 'search')}
-          onCancelSearch={() => doSearch(setSearchTerm(''), 'search')} // clears cards, and refetches them
+          onCancelSearch={() => cancelSearch()} // clears cards, and refetches them
         />
+        {<SearchMessage message={searchMessage}/>}
       </div>
       <div className='cards-container'>
         <InfiniteScroll
