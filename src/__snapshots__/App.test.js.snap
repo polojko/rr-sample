@@ -8,7 +8,7 @@ exports[`<App> App component renders correctly 1`] = `
     className="App-header"
   >
     <img
-      alt="Elder Scrolls Legends"
+      alt="The Elder Scrolls Legends™"
       className="App-logo"
       src="/logo.png"
     />

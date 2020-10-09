@@ -27,7 +27,7 @@ function App(props) {
     let searchTerm = name ? name : '';
     let pageCount = (type && type === 'search') ? 1 : page;
     setTimeout(() => {
-      fetch('https://api.elderscrollslegends.io/v1/cards?name=' + searchTerm + '&pageSize=' + pageSize + '&page=' + pageCount) // useSwr to cache this - yugo-music
+      fetch('https://api.elderscrollslegends.io/v1/cards?name=' + searchTerm + '&pageSize=' + pageSize + '&page=' + pageCount) // useSwr to cache this
         .then(response => response.json())
         .then(json => {
           setIsLoading(false);
@@ -121,7 +121,7 @@ function App(props) {
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src='/logo.png' className='App-logo' alt='Elder Scrolls Legends' />
+        <img src='/logo.png' className='App-logo' alt={Constants.ALT_TEXT} />
       </header>
       <div className='search'>
         <SearchBar
