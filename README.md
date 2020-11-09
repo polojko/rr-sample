@@ -40,7 +40,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * Project is fully responsive, accommodating all form-factors.
 
 ## Demo
-This site is currently deployed at https://highspot.vercel.app/.
+This site is currently deployed at https://polojko-rr-sample.vercel.app/.
 
 ## Used Libraries
 
