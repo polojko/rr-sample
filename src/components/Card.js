@@ -1,13 +1,6 @@
 import React from 'react';
 
-const Card = ({ card }) => {
-
-    const getLocalStorageItem = (id) => {
-        let parseToBool = JSON.parse(localStorage.getItem(id))
-        if (parseToBool) {
-            return parseToBool
-        }
-    }
+const Card = ({ card, selected }) => {
 
     return (
         <div key={card.id} className='card'>
@@ -23,7 +16,7 @@ const Card = ({ card }) => {
                 <input
                     id={card.id}
                     type='checkbox'
-                    defaultChecked={getLocalStorageItem(card.id)}
+                    defaultChecked={selected}
                     onChange={(e) => localStorage.setItem(card.id, e.target.checked)}
                 />
             </div>

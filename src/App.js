@@ -111,6 +111,18 @@ function App(props) {
   }
 
   /**
+   * Checking if card is initially selected
+   * @param {String} id 
+   */
+  const getLocalStorageItem = (id) => {
+    let parseToBool = JSON.parse(localStorage.getItem(id))
+    if (parseToBool) {
+        return parseToBool
+    }
+    return false
+}
+
+  /**
    * Hook to load data, set scroll event listener
    */
   useEffect(() => {
@@ -142,7 +154,7 @@ function App(props) {
           scrollThreshold='100px'
         >
           {cards.map((card) => (
-            <Card card={card} key={card.id} />
+            <Card card={card} key={card.id} selected={getLocalStorageItem(card.id)} />
           ))}
         </InfiniteScroll>
       </div>
