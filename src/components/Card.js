@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import ProgressiveImage from 'react-progressive-image';
 
 const IOSSwitch = withStyles((theme) => ({
     root: {
@@ -63,7 +64,11 @@ const Card = ({ card, selected }) => {
 
     return (
         <div key={card.id} className='card'>
-            <img src={card.imageUrl} alt={card.name} />
+            <ProgressiveImage src={card.imageUrl} placeholder="/rift_thane.png">
+            {(src, loading) => (
+                <img style={{ opacity: loading ? 0.5 : 1 }} src={src} alt={card.name} />
+              )}
+            </ProgressiveImage>
             <div className='card-name'>{card.name}</div>
             <div className='card-text'>{card.text}</div>
             <div className='other-fields'>
