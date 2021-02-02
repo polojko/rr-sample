@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import ProgressiveImage from 'react-progressive-image';
+import { Loader } from './Helpers';
 
 const IOSSwitch = withStyles((theme) => ({
     root: {
@@ -30,11 +31,9 @@ const IOSSwitch = withStyles((theme) => ({
     thumb: {
         width: 24,
         height: 24,
-        // backgroundColor: '#ecd797'
     },
     track: {
         borderRadius: 26 / 2,
-        // border: `1px solid ${theme.palette.grey[400]}`,
         backgroundColor: '#9c8f6a',
         opacity: 1,
         transition: theme.transitions.create(['background-color', 'border']),
@@ -64,9 +63,12 @@ const Card = ({ card, selected }) => {
 
     return (
         <div key={card.id} className='card'>
-            <ProgressiveImage src={card.imageUrl} placeholder="/rift_thane.png">
+            <ProgressiveImage src={card.imageUrl} placeholder="/loader-img.png">
             {(src, loading) => (
-                <img style={{ opacity: loading ? 0.5 : 1 }} src={src} alt={card.name} />
+                <>
+                    {loading && <Loader/>}
+                    <img style={{ opacity: loading ? 0.5 : 1 }} src={src} alt={card.name} />
+                </>
               )}
             </ProgressiveImage>
             <div className='card-name'>{card.name}</div>
