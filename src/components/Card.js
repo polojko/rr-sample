@@ -64,12 +64,9 @@ const Card = ({ card, selected }) => {
     return (
         <div key={card.id} className='card'>
             <ProgressiveImage src={card.imageUrl} placeholder="/loader-img.png">
-            {(src, loading) => (
-                <>
-                    {loading && <Loader/>}
-                    <img style={{ opacity: loading ? 0.5 : 1 }} src={src} alt={card.name} />
-                </>
-              )}
+            {(src, loading) => {
+                return loading ? <Loader /> : <img src={src} alt={card.description} />;
+            }}
             </ProgressiveImage>
             <div className='card-name'>{card.name}</div>
             <div className='card-text'>{card.text}</div>
