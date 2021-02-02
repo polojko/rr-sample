@@ -13,7 +13,7 @@ exports[`Footer component renders correctly 1`] = `
   className="footer"
 >
   © 
-  2020
+  2021
    The Elder Scrolls Legends™. All rights reserved
 </div>
 `;

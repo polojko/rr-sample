@@ -4,10 +4,38 @@ exports[`Card component renders correctly 1`] = `
 <div
   className="card"
 >
-  <img
-    alt="Raise Dead"
-    src="https://images.elderscrollslegends.io/cs/raise_dead.png"
-  />
+  <div
+    className="loader"
+  >
+    <div
+      className="MuiCircularProgress-root MuiCircularProgress-indeterminate"
+      role="progressbar"
+      style={
+        Object {
+          "height": 40,
+          "width": 40,
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+    <p>
+      Loading...
+    </p>
+  </div>
   <div
     className="card-name"
   >
@@ -36,6 +64,57 @@ exports[`Card component renders correctly 1`] = `
        
       Action
     </span>
+  </div>
+  <div
+    className="select-card"
+  >
+    <label
+      className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementStart"
+    >
+      <span
+        className="MuiSwitch-root Component-root-1 MuiSwitch-sizeSmall"
+      >
+        <span
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-7 MuiSwitch-switchBase Component-switchBase-2 MuiSwitch-colorSecondary"
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={null}
+        >
+          <span
+            className="MuiIconButton-label"
+          >
+            <input
+              className="PrivateSwitchBase-input-10 MuiSwitch-input"
+              name="ce7be2e72d6b06a52e50bed01952801ca4ecfade"
+              onChange={[Function]}
+              type="checkbox"
+              value=""
+            />
+            <span
+              className="MuiSwitch-thumb Component-thumb-3"
+            />
+          </span>
+        </span>
+        <span
+          className="MuiSwitch-track Component-track-4"
+        />
+      </span>
+      <span
+        className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+      >
+        Select card:
+      </span>
+    </label>
   </div>
 </div>
 `;
